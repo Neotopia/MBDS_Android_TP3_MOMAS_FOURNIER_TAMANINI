@@ -31,6 +31,11 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.list_neighbors_fragment, container, false)
+
+        (activity as? NavigationListener)?.let {
+            it.updateTitle(R.string.list_neighbours_toolbar_name)
+        }
+
         recyclerView = view.findViewById(R.id.neighbors_list)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(

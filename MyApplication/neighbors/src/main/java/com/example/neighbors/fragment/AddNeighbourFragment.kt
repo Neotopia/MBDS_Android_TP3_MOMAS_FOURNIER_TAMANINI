@@ -37,6 +37,10 @@ class AddNeighbourFragment: Fragment(), TextWatcher {
 
         val view = inflater.inflate(R.layout.add_neighbour_fragment, container, false)
 
+        (activity as? NavigationListener)?.let {
+            it.updateTitle(R.string.add_neighbour_toolbar_name)
+        }
+
         nameField = view.findViewById(R.id.name)
         emailAddressField = view.findViewById(R.id.emailAddress)
         phoneField = view.findViewById(R.id.phone)

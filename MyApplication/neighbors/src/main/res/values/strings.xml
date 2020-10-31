@@ -9,5 +9,7 @@
     <string name="hint_address">Email</string>
     <string name="phone_helper_text">ex: 0612345678</string>
     <string name="email_helper_text">ex: example@email.com</string>
+    <string name="add_neighbour_toolbar_name">Nouveau voisin</string>
+    <string name="list_neighbours_toolbar_name">Liste des voisins</string>
 
 </resources>
