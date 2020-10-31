@@ -44,6 +44,10 @@ class AddNeighbourFragment: Fragment(), TextWatcher {
         saveButton = view.findViewById(R.id.save_button)
 
         saveButton.setOnClickListener{
+
+            // On récupère la taille de la liste des voisins pour incrémenter automatiquement l'ID
+            val numero = NeighborRepository.getInstance().getNeighbours().size + 1
+
             val name: String = nameField.text.toString()
             val address:String = emailAddressField.text.toString()
             val phone: String = phoneField.text.toString()
@@ -51,9 +55,8 @@ class AddNeighbourFragment: Fragment(), TextWatcher {
             val aboutMe: String = aboutMeField.text.toString()
             val image: String = imageField.text.toString()
 
-            // Trouver un moyen d'auto incrémenter l'id ???
             val newNeighbour = Neighbor(
-                id = 1,
+                id = numero.toLong(),
                 name = name,
                 address = address,
                 phoneNumber = phone,
@@ -63,7 +66,6 @@ class AddNeighbourFragment: Fragment(), TextWatcher {
                 favorite = false
             )
             NeighborRepository.getInstance().createNeighbour(newNeighbour)
-            println(newNeighbour)
         }
         nameField.addTextChangedListener(this)
         emailAddressField.addTextChangedListener(this)
