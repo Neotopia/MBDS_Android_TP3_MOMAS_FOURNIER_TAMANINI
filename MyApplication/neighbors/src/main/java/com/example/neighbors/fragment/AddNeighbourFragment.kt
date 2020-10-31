@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import androidx.fragment.app.Fragment
+import com.example.NavigationListener
 import com.example.neighbors.R
 import com.example.neighbors.data.NeighborRepository
 import com.example.neighbors.models.Neighbor
@@ -67,6 +68,11 @@ class AddNeighbourFragment: Fragment(), TextWatcher {
                 favorite = false
             )
             NeighborRepository.getInstance().createNeighbour(newNeighbour)
+
+            // dès que le voisin est créé, on revient sur la liste des voisins
+            (activity as? NavigationListener)?.let {
+                it.showFragment(ListNeighborsFragment())
+            }
         }
         nameField.addTextChangedListener(this)
         emailAddressField.addTextChangedListener(this)
