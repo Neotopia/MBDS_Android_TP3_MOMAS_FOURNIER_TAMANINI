@@ -1,5 +1,7 @@
 package com.example.neighbors.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.NavigationListener
+import com.example.neighbors.MainActivity
 import com.example.neighbors.R
 import com.example.neighbors.adapters.ListNeighborHandler
 import com.example.neighbors.adapters.ListNeighborsAdapter
@@ -62,7 +65,33 @@ class ListNeighborsFragment: Fragment(), ListNeighborHandler {
     }
 
     override fun onDeleteNeighbor(neighbor: Neighbor) {
-        TODO("Not yet implemented")
+
+        println(neighbor.name)
+        NeighborRepository.getInstance().deleteNeighbour(neighbor)
+
+        /*
+
+        Nous n'arrivons pas à afficher le alertDialog lors du clic sur le bouton delete ...
+
+        val alert = AlertDialog.Builder(getContext())
+
+        // set message of alert dialog
+        alert.setMessage("Do you want to delete this neighbor?")
+            // if the dialog is cancelable
+            .setCancelable(false)
+            // positive button text and action
+            .setPositiveButton(R.string.ok, DialogInterface.OnClickListener {
+                    dialog, id -> NeighborRepository.getInstance().deleteNeighbour(neighbor)
+            })
+            // negative button text and action
+            .setNegativeButton(R.string.cancel, DialogInterface.OnClickListener {
+                    dialog, id -> dialog.cancel()
+            })
+
+        val alertDialog: AlertDialog = alert.create()
+        // Set other dialog properties
+        alertDialog.show()
+    */
     }
 
 }

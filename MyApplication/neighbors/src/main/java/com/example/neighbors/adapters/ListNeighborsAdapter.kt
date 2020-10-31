@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.neighbors.R
+import com.example.neighbors.fragment.ListNeighborsFragment
 import com.example.neighbors.models.Neighbor
-import java.security.AccessController.getContext
+
+private lateinit var deleteButton: ImageButton
 
 class ListNeighborsAdapter(
     items: List<Neighbor>
@@ -21,6 +23,10 @@ class ListNeighborsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.neighbor_item, parent, false)
+
+        deleteButton = view.findViewById(R.id.item_list_delete_button)
+
+
         return ViewHolder(view)
     }
 
@@ -39,9 +45,13 @@ class ListNeighborsAdapter(
             .error(R.drawable.ic_baseline_person_outline_24)
             .skipMemoryCache(false)
             .into(holder.mNeighbourAvatar)
+
+        deleteButton.setOnClickListener{
+            val listNeighborsFragment = ListNeighborsFragment()
+            listNeighborsFragment.onDeleteNeighbor(neighbour)
+            notifyDataSetChanged()
+        }
     }
-
-
 
     // Va dire au system combien d'objet afficher = nombre d'elts dans la liste (pour ne pas scroll à l'infini)
     override fun getItemCount(): Int {

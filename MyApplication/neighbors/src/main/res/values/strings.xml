@@ -11,4 +11,6 @@
     <string name="email_helper_text">ex: example@email.com</string>
     <string name="add_neighbour_toolbar_name">Nouveau voisin</string>
     <string name="list_neighbours_toolbar_name">Liste des voisins</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Annuler</string>
 </resources>
