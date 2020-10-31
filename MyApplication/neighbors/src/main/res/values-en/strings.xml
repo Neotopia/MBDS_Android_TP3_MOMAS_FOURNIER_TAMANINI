@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Neighbors</string>
+    <string name="button_save">Save</string>
+    <string name="hint_about_me">About me</string>
+    <string name="hint_website">Website</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_image">Image</string>
+    <string name="hint_address">Email</string>
+    <string name="phone_helper_text">ex: 0612345678</string>
+    <string name="email_helper_text">ex: example@email.com</string>
+    <string name="add_neighbour_toolbar_name">New neighbor</string>
+    <string name="list_neighbours_toolbar_name">List of neighbors</string>
+</resources>
