@@ -19,9 +19,9 @@ import com.example.neighbors.models.Neighbor
 private lateinit var deleteButton: ImageButton
 
 class ListNeighborsAdapter(
-    items: List<Neighbor>
+    items: MutableList<Neighbor>
 ) : RecyclerView.Adapter<ListNeighborsAdapter.ViewHolder>() {
-    private val mNeighbours: List<Neighbor> = items
+    private val mNeighbours: MutableList<Neighbor> = items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.neighbor_item, parent, false)
@@ -47,7 +47,7 @@ class ListNeighborsAdapter(
             .skipMemoryCache(false)
             .into(holder.mNeighbourAvatar)
 
-        deleteButton.setOnClickListener{
+        holder.mDeleteButton.setOnClickListener{
             val alert = AlertDialog.Builder(context)
             // set message of alert dialog
             alert.setMessage(R.string.wantToDeleteNeighbor)
@@ -57,7 +57,8 @@ class ListNeighborsAdapter(
                 .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { dialog, id ->
                     val listNeighborsFragment = ListNeighborsFragment()
                     listNeighborsFragment.onDeleteNeighbor(neighbour)
-                    notifyItemRemoved(position)
+                    mNeighbours.remove(neighbour)
+                    notifyDataSetChanged()
                 })
                 // negative button text and action
                 .setNegativeButton(R.string.no, DialogInterface.OnClickListener { dialog, id ->

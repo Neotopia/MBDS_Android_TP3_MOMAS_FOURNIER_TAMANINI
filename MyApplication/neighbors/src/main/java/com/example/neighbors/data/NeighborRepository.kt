@@ -11,7 +11,7 @@ class NeighborRepository {
         apiService = DummyNeighborApiService()
     }
 
-    fun getNeighbours(): List<Neighbor> = apiService.neighbours
+    fun getNeighbours(): MutableList<Neighbor> = apiService.neighbours
 
     fun createNeighbour(neighbor: Neighbor) = apiService.createNeighbour(neighbor)
 

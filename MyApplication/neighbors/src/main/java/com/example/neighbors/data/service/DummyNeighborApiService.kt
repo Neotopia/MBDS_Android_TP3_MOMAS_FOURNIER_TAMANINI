@@ -4,7 +4,7 @@ import com.example.neighbors.models.Neighbor
 
 class DummyNeighborApiService : NeighborApiService {
 
-    override val neighbours: List<Neighbor>
+    override val neighbours: MutableList<Neighbor>
         get() = DUMMY_NeighborS
 
     override fun deleteNeighbour(neighbor: Neighbor) {
