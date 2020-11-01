@@ -12,6 +12,7 @@
     <string name="email_helper_text">ex: example@email.com</string>
     <string name="add_neighbour_toolbar_name">New neighbor</string>
     <string name="list_neighbours_toolbar_name">List of neighbors</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="wantToDeleteNeighbor">"Do you really want to delete this neighbor?"</string>
 </resources>

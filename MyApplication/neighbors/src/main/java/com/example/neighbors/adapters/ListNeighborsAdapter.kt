@@ -1,6 +1,8 @@
 package com.example.neighbors.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +28,6 @@ class ListNeighborsAdapter(
 
         deleteButton = view.findViewById(R.id.item_list_delete_button)
 
-
         return ViewHolder(view)
     }
 
@@ -47,9 +48,26 @@ class ListNeighborsAdapter(
             .into(holder.mNeighbourAvatar)
 
         deleteButton.setOnClickListener{
-            val listNeighborsFragment = ListNeighborsFragment()
-            listNeighborsFragment.onDeleteNeighbor(neighbour)
-            notifyDataSetChanged()
+            println(position)
+            val alert = AlertDialog.Builder(context)
+            // set message of alert dialog
+            alert.setMessage(R.string.wantToDeleteNeighbor)
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // positive button text and action
+                .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { dialog, id ->
+                    val listNeighborsFragment = ListNeighborsFragment()
+                    listNeighborsFragment.onDeleteNeighbor(neighbour)
+                    notifyItemRemoved(position)
+                })
+                // negative button text and action
+                .setNegativeButton(R.string.no, DialogInterface.OnClickListener { dialog, id ->
+                    dialog.cancel()
+                })
+
+            val alertDialog: AlertDialog = alert.create()
+            // Set other dialog properties
+            alertDialog.show()
         }
     }
 
