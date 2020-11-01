@@ -48,7 +48,6 @@ class ListNeighborsAdapter(
             .into(holder.mNeighbourAvatar)
 
         deleteButton.setOnClickListener{
-            println(position)
             val alert = AlertDialog.Builder(context)
             // set message of alert dialog
             alert.setMessage(R.string.wantToDeleteNeighbor)
@@ -66,7 +65,6 @@ class ListNeighborsAdapter(
                 })
 
             val alertDialog: AlertDialog = alert.create()
-            // Set other dialog properties
             alertDialog.show()
         }
     }
